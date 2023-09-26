@@ -3,22 +3,51 @@
     <job-metadata>
         <job-description>Created with DataCleaner Community edition 5.8.1</job-description>
         <author>aid</author>
-        <updated-date>2023-09-25+01:00</updated-date>
+        <updated-date>2023-09-26+01:00</updated-date>
         <metadata-properties>
             <property name="CoordinatesX.datastores.customers.csv">40</property>
             <property name="CoordinatesY.datastores.customers.csv">40</property>
-            <property name="CoordinatesX.output.ex1.csv">111</property>
-            <property name="CoordinatesY.output.ex1.csv">90</property>
+            <property name="CoordinatesX.output.ex1.csv">247</property>
+            <property name="CoordinatesY.output.ex1.csv">119</property>
         </metadata-properties>
     </job-metadata>
     <source>
-        <data-context ref="ex1.csv"/>
+        <data-context ref="Exercice 1"/>
         <columns>
             <column id="col_municipality" path="Municipality" type="STRING"/>
             <column id="col_cpes" path="CPEs" type="STRING"/>
             <column id="col_kwh" path="kWh" type="STRING"/>
         </columns>
     </source>
-    <transformation/>
-    <analysis/>
+    <transformation>
+        <transformer>
+            <descriptor ref="Convert to number"/>
+            <metadata-properties>
+                <property name="CoordinatesY">121</property>
+                <property name="CoordinatesX">462</property>
+            </metadata-properties>
+            <properties>
+                <property name="Decimal separator" value="."/>
+                <property name="Minus sign" value="-"/>
+                <property name="Null replacement" value="&lt;null&gt;"/>
+                <property name="Thousand separator" value="&amp;#44;"/>
+            </properties>
+            <input ref="col_cpes"/>
+            <input ref="col_kwh"/>
+            <output id="col_cpes2" name="CPEs"/>
+            <output id="col_kwh2" name="kWh"/>
+        </transformer>
+    </transformation>
+    <analysis>
+        <analyzer>
+            <descriptor ref="Scatter plot"/>
+            <metadata-properties>
+                <property name="CoordinatesY">123</property>
+                <property name="CoordinatesX">744</property>
+            </metadata-properties>
+            <properties/>
+            <input ref="col_cpes2" name="Variable1"/>
+            <input ref="col_kwh2" name="Variable2"/>
+        </analyzer>
+    </analysis>
 </job>
