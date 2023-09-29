@@ -3,16 +3,14 @@
     <job-metadata>
         <job-description>Created with DataCleaner Community edition 5.8.1</job-description>
         <author>aid</author>
-        <updated-date>2023-09-26+01:00</updated-date>
+        <updated-date>2023-09-29+01:00</updated-date>
         <metadata-properties>
-            <property name="CoordinatesX.datastores.customers.csv">40</property>
-            <property name="CoordinatesY.datastores.customers.csv">40</property>
-            <property name="CoordinatesX.output.ex1.csv">247</property>
-            <property name="CoordinatesY.output.ex1.csv">119</property>
+            <property name="CoordinatesX.output.ex1.csv">171</property>
+            <property name="CoordinatesY.output.ex1.csv">117</property>
         </metadata-properties>
     </job-metadata>
     <source>
-        <data-context ref="Exercice 1"/>
+        <data-context ref="Exercício 2"/>
         <columns>
             <column id="col_municipality" path="Municipality" type="STRING"/>
             <column id="col_cpes" path="CPEs" type="STRING"/>
@@ -23,8 +21,8 @@
         <transformer>
             <descriptor ref="Convert to number"/>
             <metadata-properties>
-                <property name="CoordinatesY">121</property>
-                <property name="CoordinatesX">462</property>
+                <property name="CoordinatesY">116</property>
+                <property name="CoordinatesX">354</property>
             </metadata-properties>
             <properties>
                 <property name="Decimal separator" value="."/>
@@ -34,20 +32,20 @@
             </properties>
             <input ref="col_cpes"/>
             <input ref="col_kwh"/>
-            <output id="col_cpes2" name="CPEs"/>
-            <output id="col_kwh2" name="kWh"/>
+            <output id="col_cpesasnumber" name="CPEs (as number)"/>
+            <output id="col_kwhasnumber" name="kWh (as number)"/>
         </transformer>
     </transformation>
     <analysis>
         <analyzer>
             <descriptor ref="Scatter plot"/>
             <metadata-properties>
-                <property name="CoordinatesY">123</property>
-                <property name="CoordinatesX">744</property>
+                <property name="CoordinatesY">116</property>
+                <property name="CoordinatesX">639</property>
             </metadata-properties>
             <properties/>
-            <input ref="col_cpes2" name="Variable1"/>
-            <input ref="col_kwh2" name="Variable2"/>
+            <input ref="col_cpesasnumber" name="Variable1"/>
+            <input ref="col_kwhasnumber" name="Variable2"/>
         </analyzer>
     </analysis>
 </job>
