@@ -841,21 +841,6 @@
         <conditions>
           <condition>
             <negated>N</negated>
-            <leftvalue>﻿Ano</leftvalue>
-            <function>&gt;</function>
-            <rightvalue/>
-            <value>
-              <name>constant</name>
-              <type>Integer</type>
-              <text>2023</text>
-              <length>-1</length>
-              <precision>0</precision>
-              <isnull>N</isnull>
-              <mask>####0;-####0</mask>
-            </value>
-          </condition>
-          <condition>
-            <negated>N</negated>
             <operator>OR</operator>
             <conditions>
               <condition>
@@ -925,21 +910,6 @@
       <condition>
         <negated>N</negated>
         <conditions>
-          <condition>
-            <negated>N</negated>
-            <leftvalue>﻿Ano</leftvalue>
-            <function>&gt;</function>
-            <rightvalue/>
-            <value>
-              <name>constant</name>
-              <type>Integer</type>
-              <text>2023</text>
-              <length>-1</length>
-              <precision>0</precision>
-              <isnull>N</isnull>
-              <mask>####0;-####0</mask>
-            </value>
-          </condition>
           <condition>
             <negated>N</negated>
             <operator>OR</operator>
