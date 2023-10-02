@@ -3,10 +3,10 @@
     <job-metadata>
         <job-description>Created with DataCleaner Community edition 5.8.1</job-description>
         <author>aid</author>
-        <updated-date>2023-09-29+01:00</updated-date>
+        <updated-date>2023-10-02+01:00</updated-date>
         <metadata-properties>
-            <property name="CoordinatesX.output.ex1.csv">171</property>
-            <property name="CoordinatesY.output.ex1.csv">117</property>
+            <property name="CoordinatesX.output.ex1.csv">216</property>
+            <property name="CoordinatesY.output.ex1.csv">120</property>
         </metadata-properties>
     </job-metadata>
     <source>
@@ -21,8 +21,8 @@
         <transformer>
             <descriptor ref="Convert to number"/>
             <metadata-properties>
-                <property name="CoordinatesY">116</property>
-                <property name="CoordinatesX">354</property>
+                <property name="CoordinatesY">114</property>
+                <property name="CoordinatesX">416</property>
             </metadata-properties>
             <properties>
                 <property name="Decimal separator" value="."/>
@@ -32,20 +32,20 @@
             </properties>
             <input ref="col_cpes"/>
             <input ref="col_kwh"/>
-            <output id="col_cpesasnumber" name="CPEs (as number)"/>
-            <output id="col_kwhasnumber" name="kWh (as number)"/>
+            <output id="col_cpes2" name="CPEs"/>
+            <output id="col_kwh2" name="kWh"/>
         </transformer>
     </transformation>
     <analysis>
         <analyzer>
             <descriptor ref="Scatter plot"/>
             <metadata-properties>
-                <property name="CoordinatesY">116</property>
-                <property name="CoordinatesX">639</property>
+                <property name="CoordinatesY">114</property>
+                <property name="CoordinatesX">704</property>
             </metadata-properties>
             <properties/>
-            <input ref="col_cpesasnumber" name="Variable1"/>
-            <input ref="col_kwhasnumber" name="Variable2"/>
+            <input ref="col_cpes2" name="Variable1"/>
+            <input ref="col_kwh2" name="Variable2"/>
         </analyzer>
     </analysis>
 </job>
