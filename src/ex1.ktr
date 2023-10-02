@@ -438,12 +438,12 @@
   </notepads>
   <order>
     <hop>
-      <from>CSV file input</from>
+      <from>Dataset A</from>
       <to>Filter rows</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>CSV file input 2</from>
+      <from>Dataset B</from>
       <to>Filter rows 2</to>
       <enabled>Y</enabled>
     </hop>
@@ -499,7 +499,7 @@
     </hop>
   </order>
   <step>
-    <name>CSV file input</name>
+    <name>Dataset A</name>
     <type>CsvInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -661,7 +661,7 @@
     </GUI>
   </step>
   <step>
-    <name>CSV file input 2</name>
+    <name>Dataset B</name>
     <type>CsvInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -766,7 +766,7 @@
       <field>
         <name>Energia Ativa (kWh)</name>
         <type>Number</type>
-        <format>#.#</format>
+        <format>#.###</format>
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
@@ -841,40 +841,34 @@
         <conditions>
           <condition>
             <negated>N</negated>
-            <operator>OR</operator>
-            <conditions>
-              <condition>
-                <negated>N</negated>
-                <leftvalue>﻿Ano</leftvalue>
-                <function>=</function>
-                <rightvalue/>
-                <value>
-                  <name>constant</name>
-                  <type>Integer</type>
-                  <text>2023</text>
-                  <length>-1</length>
-                  <precision>0</precision>
-                  <isnull>N</isnull>
-                  <mask>####0;-####0</mask>
-                </value>
-              </condition>
-              <condition>
-                <negated>N</negated>
-                <operator>AND</operator>
-                <leftvalue>Mês</leftvalue>
-                <function>=</function>
-                <rightvalue/>
-                <value>
-                  <name>constant</name>
-                  <type>Integer</type>
-                  <text>6</text>
-                  <length>-1</length>
-                  <precision>0</precision>
-                  <isnull>N</isnull>
-                  <mask>####0;-####0</mask>
-                </value>
-              </condition>
-            </conditions>
+            <leftvalue>﻿Ano</leftvalue>
+            <function>=</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>Integer</type>
+              <text>2023</text>
+              <length>-1</length>
+              <precision>0</precision>
+              <isnull>N</isnull>
+              <mask>####0;-####0</mask>
+            </value>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>Mês</leftvalue>
+            <function>=</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>Integer</type>
+              <text>6</text>
+              <length>-1</length>
+              <precision>0</precision>
+              <isnull>N</isnull>
+              <mask>####0;-####0</mask>
+            </value>
           </condition>
         </conditions>
       </condition>
@@ -912,40 +906,34 @@
         <conditions>
           <condition>
             <negated>N</negated>
-            <operator>OR</operator>
-            <conditions>
-              <condition>
-                <negated>N</negated>
-                <leftvalue>﻿Ano</leftvalue>
-                <function>=</function>
-                <rightvalue/>
-                <value>
-                  <name>constant</name>
-                  <type>Integer</type>
-                  <text>2023</text>
-                  <length>-1</length>
-                  <precision>0</precision>
-                  <isnull>N</isnull>
-                  <mask>####0;-####0</mask>
-                </value>
-              </condition>
-              <condition>
-                <negated>N</negated>
-                <operator>AND</operator>
-                <leftvalue>Mês</leftvalue>
-                <function>=</function>
-                <rightvalue/>
-                <value>
-                  <name>constant</name>
-                  <type>Integer</type>
-                  <text>6</text>
-                  <length>-1</length>
-                  <precision>0</precision>
-                  <isnull>N</isnull>
-                  <mask>####0;-####0</mask>
-                </value>
-              </condition>
-            </conditions>
+            <leftvalue>﻿Ano</leftvalue>
+            <function>=</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>Integer</type>
+              <text>2023</text>
+              <length>-1</length>
+              <precision>0</precision>
+              <isnull>N</isnull>
+              <mask>####0;-####0</mask>
+            </value>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>Mês</leftvalue>
+            <function>=</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>Integer</type>
+              <text>6</text>
+              <length>-1</length>
+              <precision>0</precision>
+              <isnull>N</isnull>
+              <mask>####0;-####0</mask>
+            </value>
           </condition>
         </conditions>
       </condition>
@@ -1005,7 +993,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>592</xloc>
+      <xloc>560</xloc>
       <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1051,7 +1039,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>592</xloc>
+      <xloc>560</xloc>
       <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1085,7 +1073,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>736</xloc>
+      <xloc>704</xloc>
       <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1104,9 +1092,11 @@
     <fields>
       <field>
         <name>Concelho</name>
+        <rename/>
       </field>
       <field>
         <name>Número de CPE's</name>
+        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -1142,8 +1132,26 @@
       </field>
       <field>
         <name>Energia Ativa (kWh)</name>
+        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>Energia Ativa (kWh)</name>
+        <rename>Energia Ativa (kWh)</rename>
+        <type>Number</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask>#.###</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -1177,13 +1185,30 @@
       </field>
       <field>
         <name>CPEs</name>
-        <rename>CPEs</rename>
+        <rename/>
       </field>
       <field>
         <name>kWh</name>
-        <rename>kWh</rename>
+        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>kWh</name>
+        <rename>kWh</rename>
+        <type>Number</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask>#.###</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -1194,7 +1219,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>848</xloc>
+      <xloc>816</xloc>
       <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1236,7 +1261,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>480</xloc>
+      <xloc>464</xloc>
       <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1278,7 +1303,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>480</xloc>
+      <xloc>464</xloc>
       <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1371,7 +1396,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>960</xloc>
+      <xloc>944</xloc>
       <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
