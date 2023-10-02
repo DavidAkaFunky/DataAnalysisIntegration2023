@@ -877,7 +877,7 @@
                 <negated>N</negated>
                 <operator>AND</operator>
                 <leftvalue>Mês</leftvalue>
-                <function>&gt;=</function>
+                <function>=</function>
                 <rightvalue/>
                 <value>
                   <name>constant</name>
@@ -963,7 +963,7 @@
                 <negated>N</negated>
                 <operator>AND</operator>
                 <leftvalue>Mês</leftvalue>
-                <function>&gt;=</function>
+                <function>=</function>
                 <rightvalue/>
                 <value>
                   <name>constant</name>
@@ -1355,6 +1355,42 @@
       <splitevery/>
     </file>
     <fields>
+      <field>
+        <name>Municipality</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>27</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>CPEs</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency/>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>0</precision>
+      </field>
+      <field>
+        <name>kWh</name>
+        <type>Number</type>
+        <format>#.###</format>
+        <currency/>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -1365,7 +1401,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>992</xloc>
+      <xloc>960</xloc>
       <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>

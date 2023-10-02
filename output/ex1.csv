@@ -1,74 +1,74 @@
 Municipality;CPEs;kWh
-Abrantes                   ;25180;10567936.841000002
+Abrantes                   ;25180;10567936.841
 Aguiar da Beira            ;4933;1135609.924
-Alandroal                  ;4133;1838245.2459999998
+Alandroal                  ;4133;1838245.246
 Albergaria-a-Velha         ;14241;14765120.434
-Albufeira                  ;54157;33437993.117000002
+Albufeira                  ;54157;33437993.117
 Alcanena                   ;8265;5643207.701
 Alcobaça                   ;39245;19699225.738
 Alcochete                  ;11819;6670715.332
 Alcoutim                   ;3703;611524.557
 Alcácer do Sal             ;8480;6333071.731
 Alenquer                   ;24858;18889521.167
-Alfândega da Fé            ;4167;758239.7180000001
-Alijó                      ;9146;2051978.2900000003
-Aljezur                    ;6523;1880390.4440000001
-Aljustrel                  ;6058;15121881.473000001
+Alfândega da Fé            ;4167;758239.718
+Alijó                      ;9146;2051978.29
+Aljezur                    ;6523;1880390.444
+Aljustrel                  ;6058;15121881.473
 Almada                     ;116447;39254590.524
 Almeida                    ;7014;1219835.386
-Almeirim                   ;14117;6655643.254000001
-Almodôvar                  ;5693;1455934.8120000002
+Almeirim                   ;14117;6655643.254
+Almodôvar                  ;5693;1455934.812
 Alpiarça                   ;4630;3980930.421
 Alter do Chão              ;2892;858120.347
 Alvaiázere                 ;5897;1248745.845
 Alvito                     ;1725;1220644.494
 Amadora                    ;98733;38592131.582
-Amarante                   ;31797;9305899.396999998
+Amarante                   ;31797;9305899.397
 Amares                     ;11329;3512297.001
 Anadia                     ;17295;9902342.348
-Ansião                     ;9048;2611803.2070000004
-Arcos de Valdevez          ;19112;7737799.645999998
-Arganil                    ;11140;3583461.1899999995
-Armamar                    ;5147;1484130.5690000001
-Arouca                     ;12670;4066420.3629999994
-Arraiolos                  ;4874;2092141.8159999999
-Arronches                  ;2319;798947.8809999999
+Ansião                     ;9048;2611803.207
+Arcos de Valdevez          ;19112;7737799.646
+Arganil                    ;11140;3583461.19
+Armamar                    ;5147;1484130.569
+Arouca                     ;12670;4066420.363
+Arraiolos                  ;4874;2092141.816
+Arronches                  ;2319;798947.881
 Arruda dos Vinhos          ;7678;2988192.087
-Aveiro                     ;51443;59927297.077999994
+Aveiro                     ;51443;59927297.078
 Avis                       ;3182;4463850.29
 Azambuja                   ;12414;12774466.277
-Baião                      ;11943;2663459.1280000005
-Barcelos                   ;57289;33547153.265999984
+Baião                      ;11943;2663459.128
+Barcelos                   ;57289;33547153.266
 Barrancos                  ;1239;401405.503
-Barreiro                   ;49322;16597481.080000002
+Barreiro                   ;49322;16597481.08
 Batalha                    ;9851;6249562.411
-Beja                       ;23054;45508349.42300001
+Beja                       ;23054;45508349.423
 Belmonte                   ;5120;1113175.786
 Benavente                  ;17696;12162078.692
 Bombarral                  ;8893;3151119.435
 Borba                      ;4292;1760942.903
-Boticas                    ;4850;1384722.2929999996
-Braga                      ;106285;57788696.45400001
-Bragança                   ;29975;9665698.092999998
-Cabeceiras de Basto        ;10645;2500309.0300000003
-Cadaval                    ;9700;3040246.3790000007
-Caldas da Rainha           ;37113;14734733.095000003
+Boticas                    ;4850;1384722.293
+Braga                      ;106285;57788696.454
+Bragança                   ;29975;9665698.093
+Cabeceiras de Basto        ;10645;2500309.03
+Cadaval                    ;9700;3040246.379
+Caldas da Rainha           ;37113;14734733.095
 Caminha                    ;16253;3418467.005
 Campo Maior                ;5372;5065489.737
-Cantanhede                 ;24399;15978565.703000002
+Cantanhede                 ;24399;15978565.703
 Carrazeda de Ansiães       ;5589;945103.769
-Carregal do Sal            ;7327;2048771.3989999997
-Cartaxo                    ;14754;8050413.658999999
+Carregal do Sal            ;7327;2048771.399
+Cartaxo                    ;14754;8050413.659
 Cascais                    ;127968;50392039.405
 Castanheira de Pêra        ;2643;770994.547
-Castelo Branco             ;43787;16499389.418000001
-Castelo de Paiva           ;8082;3449372.4540000004
+Castelo Branco             ;43787;16499389.418
+Castelo de Paiva           ;8082;3449372.454
 Castelo de Vide            ;2950;1139564.746
 Castro daire               ;12644;2566826.568
-Castro Marim               ;9316;4480393.471000001
-Castro Verde               ;4998;1444741.7839999998
+Castro Marim               ;9316;4480393.471
+Castro Verde               ;4998;1444741.784
 Celorico da Beira          ;6283;1275487.829
-Celorico de Basto          ;11086;3337783.1660000007
+Celorico de Basto          ;11086;3337783.166
 Chamusca                   ;6319;5439307.862
 Chaves                     ;30771;9014340.147
 Cinfães                    ;12296;2505621.108
@@ -76,204 +76,204 @@ Coimbra                    ;94439;56794630.698
 Condeixa-a-Nova            ;9346;4138516.033
 Constância                 ;2426;3588449.828
 Coruche                    ;11651;8541292.112
-Covilhã                    ;36054;15750846.116999999
-Crato                      ;3162;816024.5729999999
+Covilhã                    ;36054;15750846.117
+Crato                      ;3162;816024.573
 Cuba                       ;3140;1774998.995
 Elvas                      ;13439;5866914.128
 Entroncamento              ;12530;5497344.352
 Espinho                    ;18639;6566676.72
-Esposende                  ;26020;8890696.009000001
-Estarreja                  ;14469;52941071.745000005
+Esposende                  ;26020;8890696.009
+Estarreja                  ;14469;52941071.745
 Estremoz                   ;9441;3979740.971
 Fafe                       ;29020;11445538.156
 Faro                       ;45822;22065549.552
 Felgueiras                 ;28083;13363232.103
 Ferreira do Alentejo       ;5357;5859503.763
-Ferreira do Zêzere         ;7926;3464518.499000001
+Ferreira do Zêzere         ;7926;3464518.499
 Figueira da Foz            ;49953;74567303.437
-Figueira de Castelo Rodrigo;5356;1037675.1379999999
-Figueiró dos Vinhos        ;5249;948937.7050000001
-Fornos de Algodres         ;4108;833669.8370000002
+Figueira de Castelo Rodrigo;5356;1037675.138
+Figueiró dos Vinhos        ;5249;948937.705
+Fornos de Algodres         ;4108;833669.837
 Freixo de Espada À Cinta   ;3518;631267.339
 Fronteira                  ;2563;826995.841
-Fundão                     ;24246;6964437.088000002
+Fundão                     ;24246;6964437.088
 Gavião                     ;3535;773182.865
-Golegã                     ;4275;3152579.7589999996
+Golegã                     ;4275;3152579.759
 Gondomar                   ;83375;29553616.939
-Gouveia                    ;10867;2336432.5510000004
-Grândola                   ;12681;7001610.3040000005
-Guarda                     ;30675;14846808.172999999
-Guimarães                  ;79085;58946424.48499999
+Gouveia                    ;10867;2336432.551
+Grândola                   ;12681;7001610.304
+Guarda                     ;30675;14846808.173
+Guimarães                  ;79085;58946424.485
 Góis                       ;4993;742029.328
 Idanha-a-Nova              ;10782;2732067.509
 Lagoa                      ;24284;12629094.096
-Lagos                      ;34479;14100184.527999999
-Lamego                     ;18053;5279547.7700000005
-Leiria                     ;82954;51741448.033999994
-Lisboa                     ;394572;242664567.35300002
-Loulé                      ;77321;44352365.304000005
-Loures                     ;110545;53919411.82100001
+Lagos                      ;34479;14100184.528
+Lamego                     ;18053;5279547.77
+Leiria                     ;82954;51741448.034
+Lisboa                     ;394572;242664567.353
+Loulé                      ;77321;44352365.304
+Loures                     ;110545;53919411.821
 Lourinhã                   ;19017;6276322.827
-Lousada                    ;22561;8628948.665000001
-Lousã                      ;11639;4074613.1289999997
-Macedo de Cavaleiros       ;12583;2774067.519000001
-Mafra                      ;50321;20789442.132999998
+Lousada                    ;22561;8628948.665
+Lousã                      ;11639;4074613.129
+Macedo de Cavaleiros       ;12583;2774067.519
+Mafra                      ;50321;20789442.133
 Maia                       ;71075;109493621.74
-Mangualde                  ;13356;13229676.595999999
+Mangualde                  ;13356;13229676.596
 Manteigas                  ;2750;677481.98
 Marco de Canaveses         ;26952;10853623.105
 Marinha Grande             ;25027;45908711.103
-Marvão                     ;2823;804391.5430000001
-Matosinhos                 ;97134;51504973.61000001
+Marvão                     ;2823;804391.543
+Matosinhos                 ;97134;51504973.61
 Mação                      ;6837;1876830.334
-Mealhada                   ;11546;7650201.085999999
-Melgaço                    ;8058;1527917.4300000002
+Mealhada                   ;11546;7650201.086
+Melgaço                    ;8058;1527917.43
 Mesão Frio                 ;2422;505784.955
-Mira                       ;9944;4747481.027000001
+Mira                       ;9944;4747481.027
 Miranda do Corvo           ;7766;1846255.568
 Miranda do douro           ;6556;1864720.142
-Mirandela                  ;17329;4632024.256999999
+Mirandela                  ;17329;4632024.257
 Mogadouro                  ;8304;1832828.57
-Moimenta da Beira          ;8571;2110316.2709999997
+Moimenta da Beira          ;8571;2110316.271
 Moita                      ;39385;9387693.409
 Monchique                  ;4570;1809858.23
 Mondim de Basto            ;5259;1148756.754
 Monforte                   ;2225;897722.605
-Montalegre                 ;10476;1736767.5949999997
+Montalegre                 ;10476;1736767.595
 Montemor-o-Novo            ;10835;5889480.294
-Montemor-o-Velho           ;14364;4051931.3700000006
+Montemor-o-Velho           ;14364;4051931.37
 Montijo                    ;32911;16941196.516
-Monção                     ;15018;4773111.455999998
+Monção                     ;15018;4773111.456
 Mora                       ;3631;1373641.587
-Mortágua                   ;6698;3844588.3439999996
+Mortágua                   ;6698;3844588.344
 Moura                      ;10421;4675012.562
-Mourão                     ;1962;819381.4230000001
-Murtosa                    ;8570;2650940.0739999996
+Mourão                     ;1962;819381.423
+Murtosa                    ;8570;2650940.074
 Murça                      ;4473;892838.321
 Mértola                    ;8018;1319320.814
-Mêda                       ;5058;767448.6440000001
-Nazaré                     ;15315;6355275.119999999
-Nelas                      ;9523;13717111.401999999
-Nisa                       ;6882;1310916.8680000002
-Odemira                    ;20291;7429955.578999999
+Mêda                       ;5058;767448.644
+Nazaré                     ;15315;6355275.12
+Nelas                      ;9523;13717111.402
+Nisa                       ;6882;1310916.868
+Odemira                    ;20291;7429955.579
 Odivelas                   ;81902;22256159.216
 Oeiras                     ;103052;50244263.016
 Oleiros                    ;5651;1207552.48
 Olhão                      ;30380;10406465.414
-Oliveira de Azeméis        ;33331;30844529.374000005
+Oliveira de Azeméis        ;33331;30844529.374
 Oliveira de Frades         ;6769;4280423.677
 Oliveira do Bairro         ;13740;10360783.478
-Oliveira do Hospital       ;14738;8037591.822999999
+Oliveira do Hospital       ;14738;8037591.823
 Ourique                    ;4170;1477680.935
 Ourém                      ;32281;13768348.379
-Ovar                       ;32390;25900054.744000003
+Ovar                       ;32390;25900054.744
 Palmela                    ;39204;41035632.52
 Pampilhosa da Serra        ;5348;862055.175
-Paredes                    ;32944;18606383.518000003
-Paredes de Coura           ;6581;1854700.3650000002
+Paredes                    ;32944;18606383.518
+Paredes de Coura           ;6581;1854700.365
 Paços de Ferreira          ;26155;15875881.636
 Pedrógão Grande            ;3832;948610.968
 Penacova                   ;8743;2514023.317
 Penafiel                   ;35462;15368134.044
-Penalva do Castelo         ;5938;1172420.4449999998
+Penalva do Castelo         ;5938;1172420.445
 Penamacor                  ;6412;1056154.26
 Penedono                   ;2804;441961.877
-Penela                     ;4069;1380182.3969999999
-Peniche                    ;23563;8055701.559999999
+Penela                     ;4069;1380182.397
+Peniche                    ;23563;8055701.56
 Peso da Régua              ;10308;2948866.857
-Pinhel                     ;8339;1503302.7190000003
-Pombal                     ;37351;21044400.957000006
+Pinhel                     ;8339;1503302.719
+Pombal                     ;37351;21044400.957
 Ponte da Barca             ;9304;1895946.266
 Ponte de Lima              ;26095;8505747.79
-Ponte de Sor               ;10934;4750168.097999999
+Ponte de Sor               ;10934;4750168.098
 Portalegre                 ;15671;9542448.141
 Portel                     ;4191;16443205.229
 Portimão                   ;56840;22045051.902
 Porto                      ;174973;97520991.223
-Porto de Mós               ;14532;10576792.091999996
+Porto de Mós               ;14532;10576792.092
 Proença-a-Nova             ;7438;2261312.23
-Póvoa de Lanhoso           ;13706;4180868.4359999998
-Póvoa de Varzim            ;45257;14983054.736999998
+Póvoa de Lanhoso           ;13706;4180868.436
+Póvoa de Varzim            ;45257;14983054.737
 Redondo                    ;4485;2005721.782
 Reguengos de Monsaraz      ;7233;3027501.334
-Resende                    ;7750;1445142.1339999998
-Ribeira de Pena            ;5048;2202787.4329999997
-Rio Maior                  ;13353;13423506.557000004
+Resende                    ;7750;1445142.134
+Ribeira de Pena            ;5048;2202787.433
+Rio Maior                  ;13353;13423506.557
 Sabrosa                    ;4933;1187693.575
 Sabugal                    ;14830;2151209.541
-Salvaterra de Magos        ;12965;6504803.291999999
+Salvaterra de Magos        ;12965;6504803.292
 Santa Comba Dão            ;7879;2219805.152
-Santa Maria da Feira       ;72389;50119944.23199999
+Santa Maria da Feira       ;72389;50119944.232
 Santa Marta de Penaguião   ;4587;834360.873
 Santarém                   ;38142;25877285.498
 Santiago do Cacém          ;20560;9241035.181
-Santo Tirso                ;30387;32734905.61099999
+Santo Tirso                ;30387;32734905.611
 Sardoal                    ;3033;691318.416
-Seia                       ;18220;4666753.927000001
-Seixal                     ;93061;89017378.33500001
-Sernancelhe                ;4764;1253302.0479999997
-Serpa                      ;10734;9775084.933999998
+Seia                       ;18220;4666753.927
+Seixal                     ;93061;89017378.335
+Sernancelhe                ;4764;1253302.048
+Serpa                      ;10734;9775084.934
 Sertã                      ;13686;4268768.122
 Sesimbra                   ;36771;11642913.767
-Setúbal                    ;75608;96646316.76900001
+Setúbal                    ;75608;96646316.769
 Sever do Vouga             ;7693;2596915.376
 Silves                     ;36513;15428357.454
 Sines                      ;9956;69893649.139
 Sintra                     ;215583;75684179.255
-Sobral de Monte Agraço     ;5940;2077298.0050000001
-Soure                      ;11801;5391681.357999999
+Sobral de Monte Agraço     ;5940;2077298.005
+Soure                      ;11801;5391681.358
 Sousel                     ;3572;1754974.135
-Sátão                      ;9447;2048276.1759999997
-São Brás de Alportel       ;7871;2816559.9570000004
+Sátão                      ;9447;2048276.176
+São Brás de Alportel       ;7871;2816559.957
 São João da Madeira        ;13526;8928718.162
 São João da Pesqueira      ;5824;1250693.614
 São Pedro do Sul           ;12247;3295407.664
 Tabuaço                    ;4423;834735.626
 Tarouca                    ;6605;1544881.137
-Tavira                     ;29620;10194949.307999998
-Terras de Bouro            ;5280;1278089.0990000002
+Tavira                     ;29620;10194949.308
+Terras de Bouro            ;5280;1278089.099
 Tomar                      ;27494;9934206.512
-Tondela                    ;19264;8866886.689000001
+Tondela                    ;19264;8866886.689
 Torre de Moncorvo          ;7212;1433351.807
-Torres Novas               ;22198;21029544.706999995
-Torres Vedras              ;52008;24405689.586999997
+Torres Novas               ;22198;21029544.707
+Torres Vedras              ;52008;24405689.587
 Trancoso                   ;8160;1670314.865
-Trofa                      ;19137;15417073.186999997
+Trofa                      ;19137;15417073.187
 Tábua                      ;9334;2529772.66
-Vagos                      ;15568;7618458.860000001
+Vagos                      ;15568;7618458.86
 Vale de Cambra             ;13471;7862887.632
 Valença                    ;10093;4510802.214
 Valongo                    ;48122;19963179.325
-Valpaços                   ;13825;2509999.0949999993
+Valpaços                   ;13825;2509999.095
 Vendas Novas               ;7049;3751564.232
 Viana do Alentejo          ;3768;1463354.97
 Viana do Castelo           ;56918;50486294.064
-Vidigueira                 ;4049;5859727.324000001
+Vidigueira                 ;4049;5859727.324
 Vieira do Minho            ;8617;3464342.692
-Vila de Rei                ;3337;743109.8250000001
+Vila de Rei                ;3337;743109.825
 Vila do Bispo              ;6842;2826331.807
-Vila do Conde              ;47465;29101319.332000013
+Vila do Conde              ;47465;29101319.332
 Vila Flor                  ;5719;1183563.301
-Vila Franca de Xira        ;78305;68315635.08700001
+Vila Franca de Xira        ;78305;68315635.087
 Vila Nova da Barquinha     ;4377;1431678.946
 Vila Nova de Cerveira      ;6797;4761004.629
 Vila Nova de Famalicão     ;56329;69987586.314
 Vila Nova de Foz Côa       ;6740;1406435.369
 Vila Nova de Gaia          ;162781;89994080.204
 Vila Nova de Paiva         ;4702;841388.379
-Vila Nova de Poiares       ;4965;1725029.3119999997
+Vila Nova de Poiares       ;4965;1725029.312
 Vila Pouca de Aguiar       ;10610;3198227.943
-Vila Real                  ;34692;12410653.173999999
+Vila Real                  ;34692;12410653.174
 Vila Real de Santo António ;24071;6619008.456
 Vila Velha de Ródão        ;3569;10511496.554
-Vila Verde                 ;27325;9158484.993999999
+Vila Verde                 ;27325;9158484.994
 Vila Viçosa                ;4996;2750623.817
-Vimioso                    ;4951;672727.3219999999
-Vinhais                    ;7958;1179068.5139999997
+Vimioso                    ;4951;672727.322
+Vinhais                    ;7958;1179068.514
 Viseu                      ;66043;26301000.364
 Vizela                     ;11254;6143197.637
-Vouzela                    ;7302;2022659.0009999997
+Vouzela                    ;7302;2022659.001
 Águeda                     ;24802;23359302.557
-Évora                      ;33178;23827676.029000003
+Évora                      ;33178;23827676.029
 Ílhavo                     ;25394;16115482.652
 Óbidos                     ;10505;5086496.92
