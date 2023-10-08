@@ -550,18 +550,8 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Add sequence</from>
-      <to>Insert / update 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Select values 2</from>
       <to>Unique rows (HashSet) 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Look for locations without ID</from>
-      <to>Sort rows</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -571,60 +561,25 @@
     </hop>
     <hop>
       <from>Look for locations without ID</from>
-      <to>Set field value to a constant</to>
+      <to>Formula 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Set field value to a constant</from>
-      <to>Sort rows</to>
+      <from>Formula 2</from>
+      <to>Modified JavaScript value</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Sort rows</from>
-      <to>Select values 4</to>
+      <from>Look for locations without ID</from>
+      <to>Modified JavaScript value</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select values 4</from>
-      <to>Add sequence</to>
+      <from>Modified JavaScript value</from>
+      <to>Insert / update 2</to>
       <enabled>Y</enabled>
     </hop>
   </order>
-  <step>
-    <name>Add sequence</name>
-    <type>Sequence</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <valuename>location_id</valuename>
-    <use_database>N</use_database>
-    <connection/>
-    <schema/>
-    <seqname>SEQ_</seqname>
-    <use_counter>Y</use_counter>
-    <counter_name/>
-    <start_at>1</start_at>
-    <increment_by>1</increment_by>
-    <max_value>999999999</max_value>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1040</xloc>
-      <yloc>176</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
   <step>
     <name>Add sequence 2</name>
     <type>Sequence</type>
@@ -991,7 +946,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1184</xloc>
+      <xloc>880</xloc>
       <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1061,8 +1016,8 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <send_true_to>Set field value to a constant</send_true_to>
-    <send_false_to>Sort rows</send_false_to>
+    <send_true_to>Formula 2</send_true_to>
+    <send_false_to>Modified JavaScript value</send_false_to>
     <compare>
       <condition>
         <negated>N</negated>
@@ -1149,6 +1104,10 @@
         <name>CodDistritoConcelhoFreguesia</name>
         <rename>location_id_tmp</rename>
       </field>
+      <field>
+        <name>CodDistritoConcelho</name>
+        <rename>municipality_id</rename>
+      </field>
       <select_unspecified>N</select_unspecified>
     </fields>
     <attributes/>
@@ -1194,64 +1153,6 @@
     <GUI>
       <xloc>176</xloc>
       <yloc>272</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Sort rows</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory/>
-    <compress>N</compress>
-    <compress_variable/>
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>district</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>municipality</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>parish</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>752</xloc>
-      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1386,8 +1287,8 @@
     </GUI>
   </step>
   <step>
-    <name>Set field value to a constant</name>
-    <type>SetValueConstant</type>
+    <name>Formula 2</name>
+    <type>Formula</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1396,15 +1297,14 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>parish</name>
-        <value>-1</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
+    <formula>
+      <field_name>location_id_tmp</field_name>
+      <formula_string>CONCATENATE([municipality_id]; "00")</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>location_id_tmp</replace_field>
+    </formula>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -1420,8 +1320,8 @@
     </GUI>
   </step>
   <step>
-    <name>Select values 4</name>
-    <type>SelectValues</type>
+    <name>Modified JavaScript value</name>
+    <type>ScriptValueMod</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1430,20 +1330,29 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+
+var location_id = 0;
+
+for (var i = 0; i &lt; location_id_tmp.length; i++)
+    location_id = location_id * 36 + parseInt(location_id_tmp.charAt(i), 36);</jsScript_script>
+      </jsScript>
+    </jsScripts>
     <fields>
       <field>
-        <name>district</name>
-        <rename/>
+        <name>location_id</name>
+        <rename>location_id</rename>
+        <type>Integer</type>
+        <length>10</length>
+        <precision>-1</precision>
+        <replace>N</replace>
       </field>
-      <field>
-        <name>municipality</name>
-        <rename/>
-      </field>
-      <field>
-        <name>parish</name>
-        <rename/>
-      </field>
-      <select_unspecified>N</select_unspecified>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -1454,7 +1363,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
+      <xloc>720</xloc>
       <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>

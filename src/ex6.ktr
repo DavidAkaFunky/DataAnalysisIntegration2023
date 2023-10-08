@@ -436,11 +436,11 @@
   <notepads>
   </notepads>
   <connection>
-    <name>employees</name>
+    <name>energy</name>
     <server>localhost</server>
     <type>MYSQL</type>
     <access>Native</access>
-    <database>employees</database>
+    <database>energy</database>
     <port>3306</port>
     <username>aid</username>
     <password>Encrypted 2be98afc86aa7f2e4cb79ce10be93a6de</password>
@@ -505,53 +505,8 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Look for locations without ID</from>
-      <to>Set field value to a constant</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Select values 2</from>
-      <to>Unique rows (HashSet) 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Sort rows</from>
-      <to>Select values 3</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Select values 3</from>
-      <to>Add sequence</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Value mapper</from>
       <to>Select values 4</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Select values 4</from>
-      <to>Sort rows 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Sort rows 2</from>
-      <to>Merge join</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Add sequence</from>
-      <to>Merge join</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Merge join</from>
-      <to>Select values 5</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Select values 5</from>
-      <to>Insert / update</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -560,66 +515,31 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Formula 2</from>
+      <to>Modified JavaScript value</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>Look for locations without ID</from>
-      <to>Select values</to>
+      <to>Formula 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Set field value to a constant</from>
-      <to>Select values</to>
+      <from>Select values 4</from>
+      <to>Insert / update</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Unique rows (HashSet) 2</from>
-      <to>Sort rows</to>
+      <from>Look for locations without ID</from>
+      <to>Modified JavaScript value</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select values</from>
+      <from>Modified JavaScript value</from>
       <to>Formula</to>
       <enabled>Y</enabled>
     </hop>
-    <hop>
-      <from>Select values</from>
-      <to>Select values 2</to>
-      <enabled>Y</enabled>
-    </hop>
   </order>
-  <step>
-    <name>Add sequence</name>
-    <type>Sequence</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <valuename>location_id</valuename>
-    <use_database>N</use_database>
-    <connection/>
-    <schema/>
-    <seqname>SEQ_</seqname>
-    <use_counter>Y</use_counter>
-    <counter_name/>
-    <start_at>1</start_at>
-    <increment_by>1</increment_by>
-    <max_value>999999999</max_value>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>880</xloc>
-      <yloc>320</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
   <step>
     <name>Dataset B</name>
     <type>CsvInput</type>
@@ -795,7 +715,7 @@
     </partitioning>
     <formula>
       <field_name>time_id</field_name>
-      <formula_string>[year] * 100 + [month]</formula_string>
+      <formula_string>[﻿Ano] * 100 + [Mês]</formula_string>
       <value_type>Integer</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
@@ -810,7 +730,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>464</xloc>
+      <xloc>496</xloc>
       <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
@@ -826,7 +746,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>employees</connection>
+    <connection>energy</connection>
     <commit>100</commit>
     <update_bypassed>N</update_bypassed>
     <lookup>
@@ -886,7 +806,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1280</xloc>
+      <xloc>864</xloc>
       <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
@@ -902,8 +822,8 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <send_true_to>Set field value to a constant</send_true_to>
-    <send_false_to>Select values</send_false_to>
+    <send_true_to>Formula 2</send_true_to>
+    <send_false_to>Modified JavaScript value</send_false_to>
     <compare>
       <condition>
         <negated>N</negated>
@@ -927,8 +847,8 @@
     </GUI>
   </step>
   <step>
-    <name>Merge join</name>
-    <type>MergeJoin</type>
+    <name>Select values 4</name>
+    <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -937,68 +857,18 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <join_type>INNER</join_type>
-    <step1>Sort rows 2</step1>
-    <step2>Add sequence</step2>
-    <keys_1>
-      <key>district</key>
-      <key>municipality</key>
-      <key>parish</key>
-    </keys_1>
-    <keys_2>
-      <key>district</key>
-      <key>municipality</key>
-      <key>parish</key>
-    </keys_2>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1024</xloc>
-      <yloc>192</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select values</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
     <fields>
       <field>
-        <name>﻿Ano</name>
-        <rename>year</rename>
-      </field>
-      <field>
-        <name>Mês</name>
-        <rename>month</rename>
-      </field>
-      <field>
-        <name>Distrito</name>
-        <rename>district</rename>
-      </field>
-      <field>
-        <name>Concelho</name>
-        <rename>municipality</rename>
-      </field>
-      <field>
-        <name>Freguesia</name>
-        <rename>parish</rename>
+        <name>location_id</name>
+        <rename/>
       </field>
       <field>
         <name>Nível de Tensão</name>
         <rename>voltage_id</rename>
+      </field>
+      <field>
+        <name>time_id</name>
+        <rename/>
       </field>
       <field>
         <name>Energia Ativa (kWh)</name>
@@ -1015,350 +885,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>320</xloc>
-      <yloc>192</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select values 2</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>district</name>
-        <rename/>
-      </field>
-      <field>
-        <name>municipality</name>
-        <rename/>
-      </field>
-      <field>
-        <name>parish</name>
-        <rename/>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>320</xloc>
-      <yloc>320</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select values 3</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>district</name>
-      </field>
-      <field>
-        <name>municipality</name>
-      </field>
-      <field>
-        <name>parish</name>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>736</xloc>
-      <yloc>320</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select values 4</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>district</name>
-      </field>
-      <field>
-        <name>municipality</name>
-      </field>
-      <field>
-        <name>parish</name>
-      </field>
-      <field>
-        <name>voltage_id</name>
-      </field>
-      <field>
-        <name>time_id</name>
-      </field>
-      <field>
-        <name>consumption</name>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
       <xloc>736</xloc>
       <yloc>192</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select values 5</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>time_id</name>
-      </field>
-      <field>
-        <name>location_id</name>
-      </field>
-      <field>
-        <name>voltage_id</name>
-      </field>
-      <field>
-        <name>consumption</name>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1152</xloc>
-      <yloc>192</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Set field value to a constant</name>
-    <type>SetValueConstant</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>Freguesia</name>
-        <value>-1</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>192</xloc>
-      <yloc>320</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Sort rows</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory/>
-    <compress>N</compress>
-    <compress_variable/>
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>district</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>municipality</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>parish</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>608</xloc>
-      <yloc>320</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Sort rows 2</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory/>
-    <compress>N</compress>
-    <compress_variable/>
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>district</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>municipality</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>parish</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>880</xloc>
-      <yloc>192</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Unique rows (HashSet) 2</name>
-    <type>UniqueRowsByHashSet</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <store_values>N</store_values>
-    <reject_duplicate_row>N</reject_duplicate_row>
-    <error_description/>
-    <fields>      </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>464</xloc>
-      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1373,7 +901,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <field_to_use>voltage_id</field_to_use>
+    <field_to_use>Nível de Tensão</field_to_use>
     <target_field/>
     <non_match_default/>
     <fields>
@@ -1396,6 +924,88 @@
     </remotesteps>
     <GUI>
       <xloc>608</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Formula 2</name>
+    <type>Formula</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <formula>
+      <field_name>CodDistritoConcelhoFreguesia</field_name>
+      <formula_string>CONCATENATE([CodDistritoConcelho]; "00")</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>CodDistritoConcelhoFreguesia</replace_field>
+    </formula>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>288</xloc>
+      <yloc>272</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Modified JavaScript value</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+
+var location_id = 0;
+
+for (var i = 0; i &lt; CodDistritoConcelhoFreguesia.length; i++)
+    location_id = location_id * 36 + parseInt(CodDistritoConcelhoFreguesia.charAt(i), 36);</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>location_id</name>
+        <rename>location_id</rename>
+        <type>Integer</type>
+        <length>10</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>384</xloc>
       <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
