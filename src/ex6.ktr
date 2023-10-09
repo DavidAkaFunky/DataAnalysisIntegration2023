@@ -736,6 +736,39 @@
     </GUI>
   </step>
   <step>
+    <name>Formula 2</name>
+    <type>Formula</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <formula>
+      <field_name>CodDistritoConcelhoFreguesia</field_name>
+      <formula_string>CONCATENATE([CodDistritoConcelho]; "00")</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>CodDistritoConcelhoFreguesia</replace_field>
+    </formula>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>288</xloc>
+      <yloc>272</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Insert / update</name>
     <type>InsertUpdate</type>
     <description/>
@@ -747,7 +780,7 @@
       <schema_name/>
     </partitioning>
     <connection>energy</connection>
-    <commit>100</commit>
+    <commit>10000</commit>
     <update_bypassed>N</update_bypassed>
     <lookup>
       <schema>energy</schema>
@@ -779,22 +812,22 @@
       <value>
         <name>time_id</name>
         <rename>time_id</rename>
-        <update>N</update>
+        <update>Y</update>
       </value>
       <value>
         <name>location_id</name>
         <rename>location_id</rename>
-        <update>N</update>
+        <update>Y</update>
       </value>
       <value>
         <name>voltage_id</name>
         <rename>voltage_id</rename>
-        <update>N</update>
+        <update>Y</update>
       </value>
       <value>
         <name>consumption</name>
         <rename>consumption</rename>
-        <update>N</update>
+        <update>Y</update>
       </value>
     </lookup>
     <attributes/>
@@ -847,6 +880,55 @@
     </GUI>
   </step>
   <step>
+    <name>Modified JavaScript value</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+
+var location_id = 0;
+
+for (var i = 0; i &lt; CodDistritoConcelhoFreguesia.length; i++)
+    location_id = location_id * 36 + parseInt(CodDistritoConcelhoFreguesia.charAt(i), 36);</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>location_id</name>
+        <rename>location_id</rename>
+        <type>Integer</type>
+        <length>10</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>384</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Select values 4</name>
     <type>SelectValues</type>
     <description/>
@@ -860,7 +942,6 @@
     <fields>
       <field>
         <name>location_id</name>
-        <rename/>
       </field>
       <field>
         <name>Nível de Tensão</name>
@@ -868,7 +949,6 @@
       </field>
       <field>
         <name>time_id</name>
-        <rename/>
       </field>
       <field>
         <name>Energia Ativa (kWh)</name>
@@ -924,88 +1004,6 @@
     </remotesteps>
     <GUI>
       <xloc>608</xloc>
-      <yloc>192</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Formula 2</name>
-    <type>Formula</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <formula>
-      <field_name>CodDistritoConcelhoFreguesia</field_name>
-      <formula_string>CONCATENATE([CodDistritoConcelho]; "00")</formula_string>
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field>CodDistritoConcelhoFreguesia</replace_field>
-    </formula>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>288</xloc>
-      <yloc>272</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Modified JavaScript value</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-
-var location_id = 0;
-
-for (var i = 0; i &lt; CodDistritoConcelhoFreguesia.length; i++)
-    location_id = location_id * 36 + parseInt(CodDistritoConcelhoFreguesia.charAt(i), 36);</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>location_id</name>
-        <rename>location_id</rename>
-        <type>Integer</type>
-        <length>10</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>384</xloc>
       <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>

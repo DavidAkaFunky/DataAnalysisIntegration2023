@@ -811,6 +811,39 @@
     </GUI>
   </step>
   <step>
+    <name>Formula 2</name>
+    <type>Formula</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <formula>
+      <field_name>location_id_tmp</field_name>
+      <formula_string>CONCATENATE([municipality_id]; "00")</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>location_id_tmp</replace_field>
+    </formula>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>608</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Insert / update</name>
     <type>InsertUpdate</type>
     <description/>
@@ -828,37 +861,25 @@
       <schema>energy</schema>
       <table>time</table>
       <key>
-        <name>year</name>
-        <field>year</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>month</name>
-        <field>month</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
         <name>time_id</name>
         <field>time_id</field>
         <condition>=</condition>
         <name2/>
       </key>
       <value>
+        <name>time_id</name>
+        <rename>time_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
         <name>year</name>
         <rename>year</rename>
-        <update>N</update>
+        <update>Y</update>
       </value>
       <value>
         <name>month</name>
         <rename>month</rename>
-        <update>N</update>
-      </value>
-      <value>
-        <name>time_id</name>
-        <rename>time_id</rename>
-        <update>N</update>
+        <update>Y</update>
       </value>
     </lookup>
     <attributes/>
@@ -898,43 +919,25 @@
         <condition>=</condition>
         <name2/>
       </key>
-      <key>
-        <name>district</name>
-        <field>district</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>municipality</name>
-        <field>municipality</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>parish</name>
-        <field>parish</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
       <value>
         <name>location_id</name>
         <rename>location_id</rename>
-        <update>N</update>
+        <update>Y</update>
       </value>
       <value>
         <name>district</name>
         <rename>district</rename>
-        <update>N</update>
+        <update>Y</update>
       </value>
       <value>
         <name>municipality</name>
         <rename>municipality</rename>
-        <update>N</update>
+        <update>Y</update>
       </value>
       <value>
         <name>parish</name>
         <rename>parish</rename>
-        <update>N</update>
+        <update>Y</update>
       </value>
     </lookup>
     <attributes/>
@@ -969,26 +972,20 @@
       <schema>energy</schema>
       <table>voltage</table>
       <key>
-        <name>level</name>
-        <field>level</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
         <name>voltage_id</name>
         <field>voltage_id</field>
         <condition>=</condition>
         <name2/>
       </key>
       <value>
-        <name>level</name>
-        <rename>level</rename>
-        <update>N</update>
-      </value>
-      <value>
         <name>voltage_id</name>
         <rename>voltage_id</rename>
-        <update>N</update>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>level</name>
+        <rename>level</rename>
+        <update>Y</update>
       </value>
     </lookup>
     <attributes/>
@@ -1036,6 +1033,55 @@
     </remotesteps>
     <GUI>
       <xloc>464</xloc>
+      <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Modified JavaScript value</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+
+var location_id = 0;
+
+for (var i = 0; i &lt; location_id_tmp.length; i++)
+    location_id = location_id * 36 + parseInt(location_id_tmp.charAt(i), 36);</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>location_id</name>
+        <rename>location_id</rename>
+        <type>Integer</type>
+        <length>10</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>720</xloc>
       <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1283,88 +1329,6 @@
     <GUI>
       <xloc>464</xloc>
       <yloc>272</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Formula 2</name>
-    <type>Formula</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <formula>
-      <field_name>location_id_tmp</field_name>
-      <formula_string>CONCATENATE([municipality_id]; "00")</formula_string>
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field>location_id_tmp</replace_field>
-    </formula>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>608</xloc>
-      <yloc>208</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Modified JavaScript value</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-
-var location_id = 0;
-
-for (var i = 0; i &lt; location_id_tmp.length; i++)
-    location_id = location_id * 36 + parseInt(location_id_tmp.charAt(i), 36);</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>location_id</name>
-        <rename>location_id</rename>
-        <type>Integer</type>
-        <length>10</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>720</xloc>
-      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
