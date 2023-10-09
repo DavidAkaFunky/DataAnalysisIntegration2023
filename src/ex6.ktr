@@ -787,45 +787,39 @@
       <table>fact_consumption</table>
       <key>
         <name>time_id</name>
-        <field>time_id</field>
+        <field>TIME_ID</field>
         <condition>=</condition>
         <name2/>
       </key>
       <key>
         <name>location_id</name>
-        <field>location_id</field>
+        <field>LOCATION_ID</field>
         <condition>=</condition>
         <name2/>
       </key>
       <key>
         <name>voltage_id</name>
-        <field>voltage_id</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>consumption</name>
-        <field>consumption</field>
+        <field>VOLTAGE_ID</field>
         <condition>=</condition>
         <name2/>
       </key>
       <value>
-        <name>time_id</name>
+        <name>TIME_ID</name>
         <rename>time_id</rename>
         <update>N</update>
       </value>
       <value>
-        <name>location_id</name>
+        <name>LOCATION_ID</name>
         <rename>location_id</rename>
         <update>N</update>
       </value>
       <value>
-        <name>voltage_id</name>
+        <name>VOLTAGE_ID</name>
         <rename>voltage_id</rename>
         <update>N</update>
       </value>
       <value>
-        <name>consumption</name>
+        <name>CONSUMPTION</name>
         <rename>consumption</rename>
         <update>N</update>
       </value>
