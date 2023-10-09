@@ -812,22 +812,22 @@
       <value>
         <name>time_id</name>
         <rename>time_id</rename>
-        <update>Y</update>
+        <update>N</update>
       </value>
       <value>
         <name>location_id</name>
         <rename>location_id</rename>
-        <update>Y</update>
+        <update>N</update>
       </value>
       <value>
         <name>voltage_id</name>
         <rename>voltage_id</rename>
-        <update>Y</update>
+        <update>N</update>
       </value>
       <value>
         <name>consumption</name>
         <rename>consumption</rename>
-        <update>Y</update>
+        <update>N</update>
       </value>
     </lookup>
     <attributes/>
