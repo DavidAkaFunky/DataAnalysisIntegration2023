@@ -436,11 +436,11 @@
   <notepads>
   </notepads>
   <connection>
-    <name>energy</name>
+    <name>energy_consumption_dw</name>
     <server>localhost</server>
     <type>MYSQL</type>
     <access>Native</access>
-    <database>energy</database>
+    <database>energy_consumption_dw</database>
     <port>3306</port>
     <username>aid</username>
     <password>Encrypted 2be98afc86aa7f2e4cb79ce10be93a6de</password>
@@ -555,28 +555,13 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Unique rows (HashSet) 2</from>
-      <to>Look for locations without ID</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Look for locations without ID</from>
-      <to>Formula 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Formula 2</from>
-      <to>Modified JavaScript value</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Look for locations without ID</from>
-      <to>Modified JavaScript value</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Modified JavaScript value</from>
       <to>Insert / update 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Unique rows (HashSet) 2</from>
+      <to>Modified JavaScript value</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -811,39 +796,6 @@
     </GUI>
   </step>
   <step>
-    <name>Formula 2</name>
-    <type>Formula</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <formula>
-      <field_name>location_id_tmp</field_name>
-      <formula_string>CONCATENATE([municipality_id]; "00")</formula_string>
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field>location_id_tmp</replace_field>
-    </formula>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>608</xloc>
-      <yloc>208</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Insert / update</name>
     <type>InsertUpdate</type>
     <description/>
@@ -854,30 +806,30 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>energy</connection>
-    <commit>100</commit>
+    <connection>energy_consumption_dw</connection>
+    <commit>10000</commit>
     <update_bypassed>N</update_bypassed>
     <lookup>
-      <schema>energy</schema>
-      <table>time</table>
+      <schema>energy_consumption_dw</schema>
+      <table>dim_time</table>
       <key>
         <name>time_id</name>
-        <field>time_id</field>
+        <field>TIME_ID</field>
         <condition>=</condition>
         <name2/>
       </key>
       <value>
-        <name>time_id</name>
+        <name>TIME_ID</name>
         <rename>time_id</rename>
         <update>Y</update>
       </value>
       <value>
-        <name>year</name>
+        <name>YEAR_ID</name>
         <rename>year</rename>
         <update>Y</update>
       </value>
       <value>
-        <name>month</name>
+        <name>MONTH_ID</name>
         <rename>month</rename>
         <update>Y</update>
       </value>
@@ -907,35 +859,35 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>energy</connection>
-    <commit>100</commit>
+    <connection>energy_consumption_dw</connection>
+    <commit>10000</commit>
     <update_bypassed>N</update_bypassed>
     <lookup>
-      <schema>energy</schema>
-      <table>location</table>
+      <schema>energy_consumption_dw</schema>
+      <table>dim_location</table>
       <key>
         <name>location_id</name>
-        <field>location_id</field>
+        <field>LOCATION_ID</field>
         <condition>=</condition>
         <name2/>
       </key>
       <value>
-        <name>location_id</name>
+        <name>LOCATION_ID</name>
         <rename>location_id</rename>
         <update>Y</update>
       </value>
       <value>
-        <name>district</name>
+        <name>DISTRICT</name>
         <rename>district</rename>
         <update>Y</update>
       </value>
       <value>
-        <name>municipality</name>
+        <name>MUNICIPALITY</name>
         <rename>municipality</rename>
         <update>Y</update>
       </value>
       <value>
-        <name>parish</name>
+        <name>PARISH</name>
         <rename>parish</rename>
         <update>Y</update>
       </value>
@@ -949,7 +901,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>880</xloc>
+      <xloc>608</xloc>
       <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
@@ -965,25 +917,25 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>energy</connection>
-    <commit>100</commit>
+    <connection>energy_consumption_dw</connection>
+    <commit>10000</commit>
     <update_bypassed>N</update_bypassed>
     <lookup>
-      <schema>energy</schema>
-      <table>voltage</table>
+      <schema>energy_consumption_dw</schema>
+      <table>dim_voltage</table>
       <key>
         <name>voltage_id</name>
-        <field>voltage_id</field>
+        <field>VOLTAGE_ID</field>
         <condition>=</condition>
         <name2/>
       </key>
       <value>
-        <name>voltage_id</name>
+        <name>VOLTAGE_ID</name>
         <rename>voltage_id</rename>
         <update>Y</update>
       </value>
       <value>
-        <name>level</name>
+        <name>LEVEL</name>
         <rename>level</rename>
         <update>Y</update>
       </value>
@@ -999,41 +951,6 @@
     <GUI>
       <xloc>752</xloc>
       <yloc>272</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Look for locations without ID</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Formula 2</send_true_to>
-    <send_false_to>Modified JavaScript value</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>location_id_tmp</leftvalue>
-        <function>IS NULL</function>
-        <rightvalue/>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>464</xloc>
-      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1055,6 +972,9 @@
         <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
         <jsScript_script>//Script here
+
+if (!location_id_tmp)
+	location_id_tmp = municipality_id + "00";
 
 var location_id = 0;
 
@@ -1081,7 +1001,7 @@ for (var i = 0; i &lt; location_id_tmp.length; i++)
       </output>
     </remotesteps>
     <GUI>
-      <xloc>720</xloc>
+      <xloc>464</xloc>
       <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
