@@ -1,41 +1,45 @@
-SET NAMES utf8;
 
-DROP DATABASE IF EXISTS energy;
+DROP DATABASE IF EXISTS energy_consumption_dw;
 
-CREATE DATABASE IF NOT EXISTS energy DEFAULT CHARACTER SET utf8;
+CREATE DATABASE energy_consumption_dw;
 
-USE energy;
+USE energy_consumption_dw;
 
-DROP TABLE IF EXISTS energy_consumption;
-DROP TABLE IF EXISTS time;
-DROP TABLE IF EXISTS location;
-DROP TABLE IF EXISTS voltage;
+DROP TABLE IF EXISTS dim_time, dim_location, dim_voltage, fact_consumption;
 
-CREATE TABLE time (
-    time_id INTEGER PRIMARY KEY,
-    year INTEGER NOT NULL,
-    month INTEGER NOT NULL,
-    UNIQUE(year, month)
+CREATE TABLE dim_time (
+    TIME_ID INT NOT NULL,
+    YEAR_ID INT NOT NULL,
+    MONTH_ID INT NOT NULL,
+    PRIMARY KEY (TIME_ID),
+    UNIQUE KEY (YEAR_ID, MONTH_ID)
 );
 
-CREATE TABLE location (
-    location_id INTEGER PRIMARY KEY,
-    district VARCHAR(16) NOT NULL,
-    municipality VARCHAR(27) NOT NULL,
-    parish VARCHAR(30) NOT NULL,
-    UNIQUE(district, municipality, parish)
+CREATE TABLE dim_location (
+    LOCATION_ID INT NOT NULL,
+    DISTRICT VARCHAR(16) NOT NULL,
+    MUNICIPALITY VARCHAR(27) NOT NULL,
+    PARISH VARCHAR(30) NOT NULL,
+    PRIMARY KEY (LOCATION_ID),
+    UNIQUE KEY (DISTRICT, MUNICIPALITY, PARISH)
 );
 
-CREATE TABLE voltage (
-    voltage_id INTEGER PRIMARY KEY,
-    level VARCHAR(32) NOT NULL UNIQUE
+CREATE TABLE dim_voltage (
+    VOLTAGE_ID INT NOT NULL,
+    LEVEL VARCHAR(32) NOT NULL,
+    PRIMARY KEY (VOLTAGE_ID),
+    UNIQUE KEY (LEVEL)
 );
 
-CREATE TABLE energy_consumption (
-    id SERIAL,
-    time_id INTEGER NOT NULL REFERENCES time(time_id),
-    location_id INTEGER NOT NULL REFERENCES location(location_id),
-    voltage_id INTEGER NOT NULL REFERENCES voltage(voltage_id),
-    consumption NUMERIC(12, 3) NOT NULL,
-    UNIQUE(time_id, location_id, voltage_id)
+CREATE TABLE fact_consumption (
+    ID SERIAL,
+    CONSUMPTION NUMERIC(12, 3) NOT NULL,
+    TIME_ID INT NOT NULL,
+    LOCATION_ID INT NOT NULL,
+    VOLTAGE_ID INT NOT NULL,
+    PRIMARY KEY (ID),
+    FOREIGN KEY (TIME_ID) REFERENCES dim_time (TIME_ID),
+    FOREIGN KEY (LOCATION_ID) REFERENCES dim_location (LOCATION_ID),
+    FOREIGN KEY (VOLTAGE_ID) REFERENCES dim_voltage (VOLTAGE_ID),
+    UNIQUE KEY (TIME_ID, LOCATION_ID, VOLTAGE_ID)
 );
