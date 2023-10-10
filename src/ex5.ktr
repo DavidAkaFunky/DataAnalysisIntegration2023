@@ -976,10 +976,7 @@
 if (!location_id_tmp)
 	location_id_tmp = municipality_id + "00";
 
-var location_id = 0;
-
-for (var i = 0; i &lt; location_id_tmp.length; i++)
-    location_id = location_id * 36 + parseInt(location_id_tmp.charAt(i), 36);</jsScript_script>
+var location_id = parseInt(location_id_tmp, 36);</jsScript_script>
       </jsScript>
     </jsScripts>
     <fields>
