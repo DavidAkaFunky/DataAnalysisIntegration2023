@@ -500,29 +500,34 @@
   </connection>
   <order>
     <hop>
-      <from>Formula</from>
-      <to>Value mapper</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Value mapper</from>
-      <to>Select values 4</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Select values 4</from>
       <to>Insert / update</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Modified JavaScript value</from>
-      <to>Formula</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Dataset B</from>
       <to>Modified JavaScript value</to>
       <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Modified JavaScript value</from>
+      <to>Value mapper</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Value mapper</from>
+      <to>Synchronize after merge</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Value mapper</from>
+      <to>Select values</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Select values</from>
+      <to>Insert / update 2</to>
+      <enabled>N</enabled>
     </hop>
   </order>
   <step>
@@ -552,7 +557,7 @@
     <encoding/>
     <fields>
       <field>
-        <name>﻿Ano</name>
+        <name>Ano</name>
         <type>Integer</type>
         <format>#</format>
         <currency>$</currency>
@@ -682,30 +687,59 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>224</xloc>
+      <xloc>176</xloc>
       <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Formula</name>
-    <type>Formula</type>
+    <name>Modified JavaScript value</name>
+    <type>ScriptValueMod</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <formula>
-      <field_name>time_id</field_name>
-      <formula_string>[﻿Ano] * 100 + [Mês]</formula_string>
-      <value_type>Integer</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field/>
-    </formula>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+
+var time_id = Ano * 100 + Mês;
+
+if (!CodDistritoConcelhoFreguesia)
+	CodDistritoConcelhoFreguesia = CodDistritoConcelho + "00";
+
+var location_id = 0;
+
+for (var i = 0; i &lt; CodDistritoConcelhoFreguesia.length; i++)
+    location_id = location_id * 36 + parseInt(CodDistritoConcelhoFreguesia.charAt(i), 36);</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>location_id</name>
+        <rename>location_id</rename>
+        <type>Integer</type>
+        <length>10</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>time_id</name>
+        <rename>time_id</rename>
+        <type>Integer</type>
+        <length>6</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -715,7 +749,45 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>496</xloc>
+      <xloc>352</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Value mapper</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <field_to_use>Nível de Tensão</field_to_use>
+    <target_field/>
+    <non_match_default>-1</non_match_default>
+    <fields>
+      <field>
+        <source_value>Muito Alta, Alta e Média Tensões</source_value>
+        <target_value>2</target_value>
+      </field>
+      <field>
+        <source_value>Baixa Tensão</source_value>
+        <target_value>1</target_value>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>464</xloc>
       <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
@@ -750,30 +822,30 @@
         <name2/>
       </key>
       <key>
-        <name>voltage_id</name>
+        <name>Nível de Tensão</name>
         <field>VOLTAGE_ID</field>
         <condition>=</condition>
         <name2/>
       </key>
       <value>
-        <name>TIME_ID</name>
-        <rename>time_id</rename>
-        <update>N</update>
+        <name>VOLTAGE_ID</name>
+        <rename>Nível de Tensão</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>CONSUMPTION</name>
+        <rename>Energia Ativa (kWh)</rename>
+        <update>Y</update>
       </value>
       <value>
         <name>LOCATION_ID</name>
         <rename>location_id</rename>
-        <update>N</update>
+        <update>Y</update>
       </value>
       <value>
-        <name>VOLTAGE_ID</name>
-        <rename>voltage_id</rename>
-        <update>N</update>
-      </value>
-      <value>
-        <name>CONSUMPTION</name>
-        <rename>consumption</rename>
-        <update>N</update>
+        <name>TIME_ID</name>
+        <rename>time_id</rename>
+        <update>Y</update>
       </value>
     </lookup>
     <attributes/>
@@ -785,14 +857,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>864</xloc>
+      <xloc>688</xloc>
       <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Modified JavaScript value</name>
-    <type>ScriptValueMod</type>
+    <name>Synchronize after merge</name>
+    <type>SynchronizeAfterMerge</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -801,33 +873,58 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-
-if (!CodDistritoConcelhoFreguesia)
-	CodDistritoConcelhoFreguesia = CodDistritoConcelho + "00";
-
-var location_id = 0;
-
-for (var i = 0; i &lt; CodDistritoConcelhoFreguesia.length; i++)
-    location_id = location_id * 36 + parseInt(CodDistritoConcelhoFreguesia.charAt(i), 36);</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
+    <connection>energy_consumption_dw</connection>
+    <commit>10000</commit>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <use_batch>N</use_batch>
+    <perform_lookup>N</perform_lookup>
+    <operation_order_field/>
+    <order_insert/>
+    <order_update/>
+    <order_delete/>
+    <lookup>
+      <schema>energy_consumption_dw</schema>
+      <table>fact_consumption</table>
+      <key>
         <name>location_id</name>
+        <field>LOCATION_ID</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>time_id</name>
+        <field>TIME_ID</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>Nível de Tensão</name>
+        <field>VOLTAGE_ID</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>CONSUMPTION</name>
+        <rename>Energia Ativa (kWh)</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>TIME_ID</name>
+        <rename>time_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>LOCATION_ID</name>
         <rename>location_id</rename>
-        <type>Integer</type>
-        <length>10</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-    </fields>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>VOLTAGE_ID</name>
+        <rename>Nível de Tensão</rename>
+        <update>Y</update>
+      </value>
+    </lookup>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -837,13 +934,13 @@ for (var i = 0; i &lt; CodDistritoConcelhoFreguesia.length; i++)
       </output>
     </remotesteps>
     <GUI>
-      <xloc>384</xloc>
-      <yloc>192</yloc>
+      <xloc>768</xloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Select values 4</name>
+    <name>Select values</name>
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
@@ -855,20 +952,90 @@ for (var i = 0; i &lt; CodDistritoConcelhoFreguesia.length; i++)
     </partitioning>
     <fields>
       <field>
-        <name>location_id</name>
-      </field>
-      <field>
         <name>Nível de Tensão</name>
-        <rename>voltage_id</rename>
-      </field>
-      <field>
-        <name>time_id</name>
+        <rename/>
       </field>
       <field>
         <name>Energia Ativa (kWh)</name>
-        <rename>consumption</rename>
+        <rename/>
+      </field>
+      <field>
+        <name>location_id</name>
+        <rename/>
+      </field>
+      <field>
+        <name>time_id</name>
+        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>Nível de Tensão</name>
+        <rename>VOLTAGE_ID</rename>
+        <type>Integer</type>
+        <length>1</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>Energia Ativa (kWh)</name>
+        <rename>CONSUMPTION</rename>
+        <type>Number</type>
+        <length>12</length>
+        <precision>3</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>location_id</name>
+        <rename>LOCATION_ID</rename>
+        <type>Integer</type>
+        <length>10</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>time_id</name>
+        <rename>TIME_ID</rename>
+        <type>Integer</type>
+        <length>6</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -879,14 +1046,14 @@ for (var i = 0; i &lt; CodDistritoConcelhoFreguesia.length; i++)
       </output>
     </remotesteps>
     <GUI>
-      <xloc>736</xloc>
-      <yloc>192</yloc>
+      <xloc>560</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Value mapper</name>
-    <type>ValueMapper</type>
+    <name>Insert / update 2</name>
+    <type>InsertUpdate</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -895,19 +1062,51 @@ for (var i = 0; i &lt; CodDistritoConcelhoFreguesia.length; i++)
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <field_to_use>Nível de Tensão</field_to_use>
-    <target_field/>
-    <non_match_default/>
-    <fields>
-      <field>
-        <source_value>Baixa Tensão</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>Muito Alta, Alta e Média Tensões</source_value>
-        <target_value>2</target_value>
-      </field>
-    </fields>
+    <connection>energy_consumption_dw</connection>
+    <commit>10000</commit>
+    <update_bypassed>N</update_bypassed>
+    <lookup>
+      <schema>energy_consumption_dw</schema>
+      <table>fact_consumption</table>
+      <key>
+        <name>TIME_ID</name>
+        <field>TIME_ID</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>LOCATION_ID</name>
+        <field>LOCATION_ID</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>VOLTAGE_ID</name>
+        <field>VOLTAGE_ID</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>VOLTAGE_ID</name>
+        <rename>VOLTAGE_ID</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>CONSUMPTION</name>
+        <rename>CONSUMPTION</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>LOCATION_ID</name>
+        <rename>LOCATION_ID</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>TIME_ID</name>
+        <rename>TIME_ID</rename>
+        <update>Y</update>
+      </value>
+    </lookup>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -917,8 +1116,8 @@ for (var i = 0; i &lt; CodDistritoConcelhoFreguesia.length; i++)
       </output>
     </remotesteps>
     <GUI>
-      <xloc>608</xloc>
-      <yloc>192</yloc>
+      <xloc>688</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
