@@ -515,8 +515,23 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Merge rows (diff)</from>
+      <to>Synchronize after merge</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
       <from>Table output</from>
       <to>Insert / update</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Select values 4</from>
+      <to>Merge rows (diff)</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Table input</from>
+      <to>Merge rows (diff)</to>
       <enabled>N</enabled>
     </hop>
     <hop>
@@ -525,13 +540,13 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select values 4</from>
-      <to>Table output</to>
+      <from>Table output</from>
+      <to>Dummy (do nothing)</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Table output</from>
-      <to>Dummy (do nothing)</to>
+      <from>Select values 4</from>
+      <to>Table output</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -539,7 +554,7 @@
     <name>Dataset B</name>
     <type>CsvInput</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
     <partitioning>
@@ -553,7 +568,7 @@
     <separator>;</separator>
     <enclosure>"</enclosure>
     <header>Y</header>
-    <buffer_size>50000</buffer_size>
+    <buffer_size>500000</buffer_size>
     <lazy_conversion>N</lazy_conversion>
     <add_filename_result>N</add_filename_result>
     <parallel>N</parallel>
@@ -698,31 +713,6 @@
     </GUI>
   </step>
   <step>
-    <name>Dummy (do nothing)</name>
-    <type>Dummy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>928</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Formula</name>
     <type>Formula</type>
     <description/>
@@ -820,8 +810,50 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>976</xloc>
+      <xloc>816</xloc>
       <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Merge rows (diff)</name>
+    <type>MergeRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <keys>
+      <key>LOCATION_ID</key>
+      <key>VOLTAGE_ID</key>
+      <key>TIME_ID</key>
+      <key>CONSUMPTION</key>
+    </keys>
+    <values>
+      <value>location_id</value>
+      <value>voltage_id</value>
+      <value>time_id</value>
+      <value>consumption</value>
+    </values>
+    <flag_field>flag</flag_field>
+    <reference>Table input</reference>
+    <compare>Select values 4</compare>
+    <compare>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>624</xloc>
+      <yloc>416</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -878,7 +910,7 @@ var location_id = parseInt(CodDistritoConcelhoFreguesia, 36);</jsScript_script>
     <name>Select values 4</name>
     <type>SelectValues</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
     <partitioning>
@@ -892,9 +924,11 @@ var location_id = parseInt(CodDistritoConcelhoFreguesia, 36);</jsScript_script>
       </field>
       <field>
         <name>time_id</name>
+        <rename/>
       </field>
       <field>
         <name>location_id</name>
+        <rename/>
       </field>
       <field>
         <name>Nível de Tensão</name>
@@ -917,6 +951,198 @@ var location_id = parseInt(CodDistritoConcelhoFreguesia, 36);</jsScript_script>
     </GUI>
   </step>
   <step>
+    <name>Synchronize after merge</name>
+    <type>SynchronizeAfterMerge</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>energy_consumption_dw</connection>
+    <commit>100</commit>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <use_batch>N</use_batch>
+    <perform_lookup>N</perform_lookup>
+    <operation_order_field>flag</operation_order_field>
+    <order_insert>new</order_insert>
+    <order_update/>
+    <order_delete/>
+    <lookup>
+      <schema>energy_consumption_dw</schema>
+      <table>fact_consumption</table>
+      <value>
+        <name>CONSUMPTION</name>
+        <rename>CONSUMPTION</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>TIME_ID</name>
+        <rename>TIME_ID</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>LOCATION_ID</name>
+        <rename>LOCATION_ID</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>VOLTAGE_ID</name>
+        <rename>VOLTAGE_ID</rename>
+        <update>Y</update>
+      </value>
+    </lookup>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>816</xloc>
+      <yloc>416</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Table input</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>energy_consumption_dw</connection>
+    <sql>SELECT
+  CONSUMPTION
+, TIME_ID
+, LOCATION_ID
+, VOLTAGE_ID
+FROM energy_consumption_dw.fact_consumption
+</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cached_row_meta_active>N</cached_row_meta_active>
+    <row-meta>
+      <value-meta>
+        <type>Number</type>
+        <storagetype>normal</storagetype>
+        <name>CONSUMPTION</name>
+        <length>12</length>
+        <precision>3</precision>
+        <origin>Table input</origin>
+        <comments>CONSUMPTION</comments>
+        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>Europe/Lisbon</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>Integer</type>
+        <storagetype>normal</storagetype>
+        <name>TIME_ID</name>
+        <length>9</length>
+        <precision>0</precision>
+        <origin>Table input</origin>
+        <comments>TIME_ID</comments>
+        <conversion_Mask>####0;-####0</conversion_Mask>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>Europe/Lisbon</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>Integer</type>
+        <storagetype>normal</storagetype>
+        <name>LOCATION_ID</name>
+        <length>9</length>
+        <precision>0</precision>
+        <origin>Table input</origin>
+        <comments>LOCATION_ID</comments>
+        <conversion_Mask>####0;-####0</conversion_Mask>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>Europe/Lisbon</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>Integer</type>
+        <storagetype>normal</storagetype>
+        <name>VOLTAGE_ID</name>
+        <length>9</length>
+        <precision>0</precision>
+        <origin>Table input</origin>
+        <comments>VOLTAGE_ID</comments>
+        <conversion_Mask>####0;-####0</conversion_Mask>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>Europe/Lisbon</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+    </row-meta>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>720</xloc>
+      <yloc>336</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Table output</name>
     <type>TableOutput</type>
     <description/>
@@ -930,7 +1156,7 @@ var location_id = parseInt(CodDistritoConcelhoFreguesia, 36);</jsScript_script>
     <connection>energy_consumption_dw</connection>
     <schema>energy_consumption_dw</schema>
     <table>fact_consumption</table>
-    <commit>50000</commit>
+    <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
     <use_batch>Y</use_batch>
@@ -971,7 +1197,7 @@ var location_id = parseInt(CodDistritoConcelhoFreguesia, 36);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>768</xloc>
+      <xloc>816</xloc>
       <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1010,6 +1236,31 @@ var location_id = parseInt(CodDistritoConcelhoFreguesia, 36);</jsScript_script>
     </remotesteps>
     <GUI>
       <xloc>528</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Dummy (do nothing)</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>976</xloc>
       <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
