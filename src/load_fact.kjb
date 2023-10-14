@@ -352,7 +352,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>${Internal.Entry.Current.Directory}/fact_consumption.ktr</filename>
+      <filename>${Internal.Entry.Current.Directory}/ex6_fact_consumption.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
