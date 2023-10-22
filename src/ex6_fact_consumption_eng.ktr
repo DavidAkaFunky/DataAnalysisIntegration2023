@@ -506,26 +506,26 @@
     </hop>
     <hop>
       <from>Formula</from>
-      <to>Formula 2</to>
+      <to>Formula 5</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Formula 2</from>
+      <from>Formula 5</from>
       <to>Table output</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Formula 2 2</from>
+      <from>Formula 6</from>
       <to>Table output 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Formula 2 3</from>
+      <from>Formula 7</from>
       <to>Table output 3</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Formula 2 4</from>
+      <from>Formula 8</from>
       <to>Table output 4</to>
       <enabled>Y</enabled>
     </hop>
@@ -611,32 +611,32 @@
     </hop>
     <hop>
       <from>Value mapper 2</from>
-      <to>Formula 3</to>
+      <to>Formula 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Value mapper 3</from>
-      <to>Formula 4</to>
+      <to>Formula 3</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Value mapper 4</from>
-      <to>Formula 5</to>
+      <to>Formula 4</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Formula 2</from>
+      <to>Formula 6</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Formula 3</from>
-      <to>Formula 2 2</to>
+      <to>Formula 7</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Formula 4</from>
-      <to>Formula 2 3</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Formula 5</from>
-      <to>Formula 2 4</to>
+      <to>Formula 8</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -746,7 +746,7 @@
       <field>
         <name>Active Energy (kWh)</name>
         <type>Number</type>
-        <format>#.#</format>
+        <format>#.###</format>
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
@@ -797,7 +797,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>112</xloc>
+      <xloc>64</xloc>
       <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
@@ -830,7 +830,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>576</xloc>
+      <xloc>688</xloc>
       <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
@@ -847,41 +847,8 @@
       <schema_name/>
     </partitioning>
     <formula>
-      <field_name>id</field_name>
-      <formula_string>[Voltage level] * 10^14 + [time_id] * 10^8 + [location_id]</formula_string>
-      <value_type>Integer</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field/>
-    </formula>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>688</xloc>
-      <yloc>64</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Formula 2 2</name>
-    <type>Formula</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <formula>
-      <field_name>id</field_name>
-      <formula_string>[Voltage level] * 10^14 + [time_id] * 10^8 + [location_id]</formula_string>
+      <field_name>time_id</field_name>
+      <formula_string>[﻿Year] * 100 + [Month]</formula_string>
       <value_type>Integer</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
@@ -898,72 +865,6 @@
     <GUI>
       <xloc>688</xloc>
       <yloc>160</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Formula 2 3</name>
-    <type>Formula</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <formula>
-      <field_name>id</field_name>
-      <formula_string>[Voltage level] * 10^14 + [time_id] * 10^8 + [location_id]</formula_string>
-      <value_type>Integer</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field/>
-    </formula>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>688</xloc>
-      <yloc>256</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Formula 2 4</name>
-    <type>Formula</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <formula>
-      <field_name>id</field_name>
-      <formula_string>[Voltage level] * 10^14 + [time_id] * 10^8 + [location_id]</formula_string>
-      <value_type>Integer</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field/>
-    </formula>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>688</xloc>
-      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -995,8 +896,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>576</xloc>
-      <yloc>160</yloc>
+      <xloc>688</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1028,8 +929,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>576</xloc>
-      <yloc>256</yloc>
+      <xloc>688</xloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1045,8 +946,8 @@
       <schema_name/>
     </partitioning>
     <formula>
-      <field_name>time_id</field_name>
-      <formula_string>[﻿Year] * 100 + [Month]</formula_string>
+      <field_name>id</field_name>
+      <formula_string>[Voltage level] * 10^14 + [time_id] * 10^8 + [location_id]</formula_string>
       <value_type>Integer</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
@@ -1061,7 +962,106 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>576</xloc>
+      <xloc>784</xloc>
+      <yloc>64</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Formula 6</name>
+    <type>Formula</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <formula>
+      <field_name>id</field_name>
+      <formula_string>[Voltage level] * 10^14 + [time_id] * 10^8 + [location_id]</formula_string>
+      <value_type>Integer</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field/>
+    </formula>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>784</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Formula 7</name>
+    <type>Formula</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <formula>
+      <field_name>id</field_name>
+      <formula_string>[Voltage level] * 10^14 + [time_id] * 10^8 + [location_id]</formula_string>
+      <value_type>Integer</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field/>
+    </formula>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>784</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Formula 8</name>
+    <type>Formula</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <formula>
+      <field_name>id</field_name>
+      <formula_string>[Voltage level] * 10^14 + [time_id] * 10^8 + [location_id]</formula_string>
+      <value_type>Integer</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field/>
+    </formula>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>784</xloc>
       <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1124,7 +1124,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>960</xloc>
+      <xloc>1040</xloc>
       <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1187,7 +1187,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>960</xloc>
+      <xloc>1040</xloc>
       <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1250,7 +1250,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>960</xloc>
+      <xloc>1040</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1313,7 +1313,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>960</xloc>
+      <xloc>1040</xloc>
       <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1362,7 +1362,7 @@ var location_id = parseInt(DistrictMunicipalityParishCode, 36);</jsScript_script
       </output>
     </remotesteps>
     <GUI>
-      <xloc>368</xloc>
+      <xloc>416</xloc>
       <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1411,7 +1411,7 @@ var location_id = parseInt(DistrictMunicipalityParishCode, 36);</jsScript_script
       </output>
     </remotesteps>
     <GUI>
-      <xloc>368</xloc>
+      <xloc>416</xloc>
       <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1460,7 +1460,7 @@ var location_id = parseInt(DistrictMunicipalityParishCode, 36);</jsScript_script
       </output>
     </remotesteps>
     <GUI>
-      <xloc>368</xloc>
+      <xloc>416</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1509,7 +1509,7 @@ var location_id = parseInt(DistrictMunicipalityParishCode, 36);</jsScript_script
       </output>
     </remotesteps>
     <GUI>
-      <xloc>368</xloc>
+      <xloc>416</xloc>
       <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1757,7 +1757,7 @@ var location_id = parseInt(DistrictMunicipalityParishCode, 36);</jsScript_script
       </output>
     </remotesteps>
     <GUI>
-      <xloc>816</xloc>
+      <xloc>896</xloc>
       <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1821,7 +1821,7 @@ var location_id = parseInt(DistrictMunicipalityParishCode, 36);</jsScript_script
       </output>
     </remotesteps>
     <GUI>
-      <xloc>816</xloc>
+      <xloc>896</xloc>
       <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1885,7 +1885,7 @@ var location_id = parseInt(DistrictMunicipalityParishCode, 36);</jsScript_script
       </output>
     </remotesteps>
     <GUI>
-      <xloc>816</xloc>
+      <xloc>896</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1949,7 +1949,7 @@ var location_id = parseInt(DistrictMunicipalityParishCode, 36);</jsScript_script
       </output>
     </remotesteps>
     <GUI>
-      <xloc>816</xloc>
+      <xloc>896</xloc>
       <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1987,7 +1987,7 @@ var location_id = parseInt(DistrictMunicipalityParishCode, 36);</jsScript_script
       </output>
     </remotesteps>
     <GUI>
-      <xloc>480</xloc>
+      <xloc>576</xloc>
       <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2025,7 +2025,7 @@ var location_id = parseInt(DistrictMunicipalityParishCode, 36);</jsScript_script
       </output>
     </remotesteps>
     <GUI>
-      <xloc>480</xloc>
+      <xloc>576</xloc>
       <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2063,7 +2063,7 @@ var location_id = parseInt(DistrictMunicipalityParishCode, 36);</jsScript_script
       </output>
     </remotesteps>
     <GUI>
-      <xloc>480</xloc>
+      <xloc>576</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2101,7 +2101,7 @@ var location_id = parseInt(DistrictMunicipalityParishCode, 36);</jsScript_script
       </output>
     </remotesteps>
     <GUI>
-      <xloc>480</xloc>
+      <xloc>576</xloc>
       <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
