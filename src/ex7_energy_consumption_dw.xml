@@ -32,7 +32,7 @@
         </Level>
       </Hierarchy>
     </Dimension>
-    <Measure name="Consumption" column="CONSUMPTION" datatype="Integer" formatString="#.###" aggregator="sum" visible="true">
+    <Measure name="Consumption" column="CONSUMPTION" datatype="Integer" formatString="#0.000" aggregator="sum" visible="true">
     </Measure>
   </Cube>
 </Schema>
